@@ -32,6 +32,15 @@ entry4 = Entry(window, textvariable=isbn_text)
 entry4.grid(row=1, column=3)
 
 
+#making a listbox/textarea which'll list out the desired output
+list1= Listbox(window, height=6, width=35)
+list1.grid(row=2, column=0, rowspan=6, columnspan=2)
+#making a scrollbar for the listbox above
+scrollbar = Scrollbar(window)
+scrollbar.grid(row=2, column=2, rowspan=6)
+#now configuring the two together
+list1.configure(yscrollcommand=scrollbar.set)
+scrollbar.configure(command=list1.yview) #here yview means a horizontal scrollbar
 
 
 
