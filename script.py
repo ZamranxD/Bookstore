@@ -44,6 +44,22 @@ scrollbar.configure(command=list1.yview) #here yview means a horizontal scrollba
 
 
 
+#adding some buttons for app functionality
+button1 = Button(window, text="View All", width=12)
+button1.grid(row=2, column=3)
+button2 = Button(window, text="Search Entry", width=12)
+button2.grid(row=3, column=3)
+button3 = Button(window, text="Add Entry", width=12)
+button3.grid(row=4, column=3)
+button4 = Button(window, text="Update Selected", width=12)
+button4.grid(row=5, column=3)
+button5 = Button(window, text="Delete Selected", width=12)
+button5.grid(row=6, column=3)
+button6 = Button(window, text="Close", width=12)
+button6.grid(row=7, column=3)
+
+
+
 
 
 
