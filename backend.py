@@ -12,7 +12,7 @@ def connect():
 def insert(title, author, year, isbn):
     connection = sqlite3.connect("bookstore.db")
     cursor = connection.cursor()
-    cursor.execute(f"INSERT INTO books VALUES (NULL, {title}, {author}, {year}, {isbn})")
+    cursor.execute("INSERT INTO books VALUES (NULL, ?,?,?,?)", (title,author,year,isbn))
     connection.commit()
     connection.close()
 
@@ -22,7 +22,17 @@ def view():
     connection = sqlite3.connect("bookstore.db")
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM books")
-    results = connection.fetchall()
+    results = cursor.fetchall()
+    connection.close()
+    return results
+
+
+#a search function to search by book/author/year or isbn
+def search(title="", author="", year="", isbn=""):
+    connection = sqlite3.connect("bookstore.db")
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM books WHERE title=? OR author=? OR year=? OR isbn=?", (title, author, year, isbn))
+    results = cursor.fetchall()
     connection.close()
     return results
 
@@ -30,3 +40,4 @@ def view():
 
 
 connect()
+
