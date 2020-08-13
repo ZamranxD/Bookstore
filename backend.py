@@ -36,8 +36,17 @@ def search(title="", author="", year="", isbn=""):
     connection.close()
     return results
 
+#a delete function to delete selected records
+def delete(id):
+    connection = sqlite3.connect("bookstore.db")
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM books WHERE id=?", (id,))
+    connection.commit()
+    connection.close()
+
 
 
 
 connect()
+print(view())
 
