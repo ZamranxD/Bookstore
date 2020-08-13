@@ -44,9 +44,18 @@ def delete(id):
     connection.commit()
     connection.close()
 
+#an update function to update entries
+def update(id, title, author, year, isbn):
+    connection = sqlite3.connect("bookstore.db")
+    cursor = connection.cursor()
+    cursor.execute("UPDATE books SET title=?, author=?, year=?, isbn=? WHERE id=?", (title, author, year, isbn, id))
+    connection.commit()
+    connection.close()
+
 
 
 
 connect()
+#update(6, "The moon", "Ron", 2019, 86838344)
 print(view())
 
